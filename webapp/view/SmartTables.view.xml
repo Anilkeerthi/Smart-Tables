@@ -1,0 +1,27 @@
+<mvc:View controllerName="smarttables.controller.SmartTables"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        
+       <Panel >
+         
+           <Button text="Smart Table" press="onClick"></Button>
+       
+       </Panel>
+         <Panel >
+         
+           <Button text="Responsive Smart Table" press="onClickResponsive"></Button>
+       
+       </Panel>
+
+        <Panel >
+         
+           <Button text="Smart Grid Table" press="onClickGrid"></Button>
+       
+       </Panel>
+        
+        
+        </content>
+    </Page>
+</mvc:View>

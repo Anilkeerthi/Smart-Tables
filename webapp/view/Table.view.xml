@@ -1,0 +1,27 @@
+<mvc:View xmlns:table="sap.ui.table" xmlns:smarttable="sap.ui.comp.smarttable" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" controllerName="smarttables.controller.Table"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+   <Page>
+   
+     
+      <smartfilterbar:SmartFilterBar id="idSmartFilterBar" entitySet="Orders" >
+      
+         <smartfilterbar:controlConfiguration>
+         
+           <smartfilterbar:ControlConfiguration id="CustomerID" visibleInAdvancedArea="true" label="Customer ID" key="CustomerID"/>
+         
+         </smartfilterbar:controlConfiguration>
+      
+      </smartfilterbar:SmartFilterBar> 
+
+      <smarttable:SmartTable id="idSmartTable" smartFilterId="idSmartFilterBar" entitySet="Orders" enableAutoBinding="true" tableType="Table">
+        <Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster">
+            
+        </Table>
+      </smarttable:SmartTable>
+    
+ 
+   
+   </Page>
+    
+</mvc:View>

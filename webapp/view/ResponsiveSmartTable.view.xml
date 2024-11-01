@@ -1,0 +1,73 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    controllerName="smarttables.controller.ResponsiveSmartTable"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true"
+    xmlns="sap.m"
+    height="100%"
+>
+    <Page
+        id="page1"
+        title="{i18n>title}"
+    >
+      <VBox fitContainer="true">
+      
+           <smartfilterbar:SmartFilterBar
+            id="idSmartFilterBarResponsiveTable"
+            entitySet="Orders"
+        >
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    id="CustomerIDResponsiveTable"
+                    visibleInAdvancedArea="true"
+                    label="Customer ID"
+                    key="CustomerID"
+                />
+                <smartfilterbar:ControlConfiguration
+                    id="OrderIDResponsiveTable"
+                    visibleInAdvancedArea="true"
+                    label="Order ID"
+                    key="OrderID"
+                />
+            </smartfilterbar:controlConfiguration>
+
+              <smartfilterbar:layoutData>
+                    <FlexItemData shrinkFactor="0" />
+                </smartfilterbar:layoutData>
+        </smartfilterbar:SmartFilterBar>
+
+        <smarttable:SmartTable
+            id="idSmartTableResponsiveTable"
+            showFullScreenButton="true"
+            editTogglable="true"
+            smartFilterId="idSmartFilterBarResponsiveTable"
+            beforeExport="onBeforeExport"
+            showDetailsButton="true"
+            detailsButtonSetting="Medium,Low"
+            useColumnLabelsAsTooltips="true"
+            showRowCount="true"
+            header="Orders"
+            enableAutoColumnWidth="false"
+            entitySet="Orders"
+            enableAutoBinding="true"
+            tableType="ResponsiveTable"
+            demandPopin="true"
+            initiallyVisibleFields="OrderID,CustomerID,OrderDate,ShipName"
+              app:preserveDecimals="false"
+               app:useSmartToggle="true"
+        >
+            <Table
+                id="idTableResponsiveTable"
+                selectionChange="handleSelectionChange"
+                class="sapUiResponsiveContentPadding"
+            />
+        </smarttable:SmartTable>
+
+        
+      
+      </VBox>
+    </Page>
+</mvc:View>

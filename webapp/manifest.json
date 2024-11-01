@@ -1,0 +1,157 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "smarttables",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.3",
+      "toolsId": "db76ab02-0441-4f4a-bc90-96418a6dc6cf"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.129.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "smarttables.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "smarttables.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteSmartTables",
+          "pattern": ":?query:",
+          "target": [
+            "TargetSmartTables"
+          ]
+        },
+        {
+          "name": "RouteTable",
+          "pattern": "SmartTable",
+          "target": [
+            "TargetTable"
+          ]
+        },
+        {
+          "name": "RouteResponsiveSmartTable",
+          "pattern": "ResponsiveSmartTable",
+          "target": [
+            "TargetResponsiveSmartTable"
+          ]
+        },
+        {
+          "name": "RouteSmartGridTable",
+          "pattern": "SmartGridTable",
+          "target": [
+            "TargetSmartGridTable"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetSmartTables": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SmartTables",
+          "viewName": "SmartTables"
+        },
+        "TargetTable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Table",
+          "viewName": "Table"
+        },
+        "TargetResponsiveSmartTable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ResponsiveSmartTable",
+          "viewName": "ResponsiveSmartTable"
+        },
+        "TargetSmartGridTable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SmartGridTable",
+          "viewName": "SmartGridTable"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "smarttables.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

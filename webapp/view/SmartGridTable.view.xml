@@ -1,0 +1,72 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    controllerName="smarttables.controller.SmartGridTable"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns="sap.m"
+    height="100%"
+>
+    <Page>
+        <VBox fitContainer="true">
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="Orders"
+                persistencyKey="SmartFilter_Explored"
+            >
+                <!-- layout data used to make the table growing but the filter bar fixed -->
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="CustomerIDResponsiveTableA"
+                        visibleInAdvancedArea="true"
+                        label="Customer ID"
+                        key="CustomerID"
+                    />
+                    <smartFilterBar:ControlConfiguration
+                        id="OrderIDResponsiveTableB"
+                        visibleInAdvancedArea="true"
+                        label="Order ID"
+                        key="OrderID"
+                    />
+                </smartFilterBar:controlConfiguration>
+
+                <smartFilterBar:layoutData>
+                    <FlexItemData shrinkFactor="0" />
+                </smartFilterBar:layoutData>
+            </smartFilterBar:SmartFilterBar>
+            <smartTable:SmartTable
+                entitySet="Orders"
+                smartFilterId="smartFilterBar"
+                beforeExport="onBeforeExport"
+                useVariantManagement="false"
+                useTablePersonalisation="true"
+                header="Products"
+                showRowCount="true"
+                persistencyKey="SmartTableRefApp_Explored"
+                initiallyVisibleFields="OrderID,CustomerID,OrderDate,ShipName"
+                showPasteButton="true"
+                paste="onPaste"
+                showFullScreenButton="true"
+                enableAutoBinding="true"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                app:preserveDecimals="false"
+				editTogglable="true" app:useSmartToggle="true"
+            >
+                <!-- layout data used to make the table growing but the filter bar fixed -->
+                <smartTable:layoutData>
+                    <FlexItemData
+                        growFactor="1"
+                        baseSize="0%"
+                    />
+                </smartTable:layoutData>
+                <smartTable:copyProvider>
+                    <plugins:CopyProvider />
+                </smartTable:copyProvider>
+            </smartTable:SmartTable>
+        </VBox>
+    </Page>
+</mvc:View>
